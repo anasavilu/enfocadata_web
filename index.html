@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enfocadata</title>
 <style>
   /* Layout: brand "sandwich" — dark teal hero & close bookend white content bands, mirroring the deck identity already in use */
@@ -8,7 +10,7 @@
   }
   *{box-sizing:border-box}
   body{
-    margin:0; background:var(--white); color:var(--ink);
+    margin:0; background:var(--white); color:var(--ink); overflow-x:hidden;
     font-family:Calibri,Carlito,'Segoe UI',system-ui,-apple-system,sans-serif;
     font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
   }
@@ -32,6 +34,11 @@
   nav.links{display:flex; gap:26px; align-items:center}
   nav.links a{color:#cfe1e6; text-decoration:none; font-size:14.5px}
   nav.links a:hover{color:#fff}
+  .nav-toggle{
+    display:none; background:transparent; border:1.5px solid rgba(255,255,255,.5); border-radius:8px;
+    width:42px; height:38px; cursor:pointer; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .nav-toggle svg{width:20px; height:20px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round}
   .btn{
     display:inline-flex; align-items:center; gap:8px; border-radius:8px; padding:11px 20px;
     font-size:15px; font-weight:700; text-decoration:none; border:1.5px solid transparent; cursor:pointer;
@@ -47,7 +54,17 @@
   .btn-plain{background:transparent; color:var(--teal); border-color:var(--border)}
   .btn-plain:hover{border-color:var(--teal)}
   nav.links a.btn-accent{color:#fff}
-  @media (max-width:720px){ nav.links{display:none} }
+  @media (max-width:720px){
+    .nav-toggle{display:flex}
+    nav.links{
+      display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch;
+      gap:0; background:var(--teal); border-bottom:1px solid rgba(255,255,255,.12);
+      box-shadow:0 12px 24px rgba(0,0,0,.25);
+    }
+    nav.links.open{display:flex}
+    nav.links a{padding:16px 24px; border-top:1px solid rgba(255,255,255,.08); font-size:16px}
+    nav.links a.btn-accent{margin:14px 24px; text-align:center; border-top:none}
+  }
 
   /* hero */
   .hero{background:var(--teal); color:#fff; position:relative; overflow:hidden; padding-block:clamp(56px,9vw,104px)}
@@ -202,13 +219,18 @@
     <g id="i-check"><polyline points="20 6 9 17 4 12"></polyline></g>
     <g id="i-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></g>
     <g id="i-whatsapp"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></g>
+    <g id="i-menu"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></g>
+    <g id="i-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></g>
   </defs>
 </svg>
 
 <header class="nav">
   <div class="wrap nav-row">
     <div class="wordmark">Enfoca<span>data</span></div>
-    <nav class="links">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
+      <svg id="nav-toggle-icon"><use href="#i-menu"></use></svg>
+    </button>
+    <nav class="links" id="nav-links">
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#para-ti">¿Es para ti?</a>
       <a href="#equipo">Equipo</a>
@@ -394,6 +416,27 @@
 
 <script>
   var EMAIL = 'info@enfocadata.com';
+
+  (function(){
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    var icon = document.getElementById('nav-toggle-icon');
+    if (!toggle || !links) return;
+    function setOpen(open){
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      icon.innerHTML = '<use href="' + (open ? '#i-close' : '#i-menu') + '"></use>';
+    }
+    toggle.addEventListener('click', function(){
+      setOpen(!links.classList.contains('open'));
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ setOpen(false); });
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 720) setOpen(false);
+    });
+  })();
 
   function copyToClipboard(text, btn, selectEl){
     var original = btn.innerHTML;
