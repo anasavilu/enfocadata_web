@@ -1,6 +1,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enfocadata</title>
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA20lEQVR4nGNkgAIhR///DCSAd/s3MjIwMDAwkaMZWQ8jOZqRARMlmhkYGBhYsAl6875maBW7xXD1Jw/Dqe8CDKwM/xikWX8yFL7QIM4FWz+LMvxnYGQ4952fYeJbeYaet4oM276IYnUBUV6w5XrPsPuLMOkGGHN+ZCgWfsAQwf8cpxqsYQADZ7/zM/S+VWDQZP+CUw1RXrj+k4fBkfsdgzjLL+Jc4MXzmoGB4T+DEedHhnzhhwzMDP8ZzDg/MmQ918JQO/AJiXIDYLmKHPBu/0ZGJhiDHM0MDAwMAF2qP7wpGbngAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhElEQVR4nO2XMU/CQBTH/3etaGOs2BpQNIi6GzcXF+MHcNI4+QVY/BQkhkQnZgcXFwc2J4m7g8ZJFpREMRGqEWuEltZFDNQGr6VcF/5bX+69/6/Xy+s7AhcpG1u2W7xfaYU8cca6AoMy7gVCeZs7vShvcycE/W/hoEXCePtOhb4DQwCRZVFaKWNHriAqmExF10trqFtMpdkAcloSOS2J84UrzIoNAEC2uogLXQUACMRGhFhYjnwiG79jMvYE4KZXawRP5mhX7MGQYOFPt+2pQM+AaRMc1lJo2uxlAwPYlp8xLTRx8pZAgzcAAbCv3kMVDc+5vs9AJlZEJlb0m94/wFEthUtdAQAQApzOX/MFeGlFUDKk3+ez9zg+LIEfgFMH1SVfeYG34qhg4HjuNjyA1bE6Zn66JYt8f4IpaiDRYSQSGxJpYXO8Bt3DWWAaSNJKGbuTFciU7Wd08zWBvceV4AAGqdDngSEAdbsu8ZJWyJPwd6BNwtu47UmdAZ7mANwHOJ7X82+vWHPmWBf/KgAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<script data-goatcounter="https://enfocadata.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
   /* Layout: brand "sandwich" — dark teal hero & close bookend white content bands, mirroring the deck identity already in use */
   :root{
@@ -231,10 +235,10 @@
       <svg id="nav-toggle-icon"><use href="#i-menu"></use></svg>
     </button>
     <nav class="links" id="nav-links">
-      <a href="#que-hacemos">Qué hacemos</a>
-      <a href="#para-ti">¿Es para ti?</a>
-      <a href="#equipo">Equipo</a>
-      <a class="btn btn-accent" href="#contacto">Hablemos</a>
+      <a href="#que-hacemos" data-goatcounter-click="nav-que-hacemos">Qué hacemos</a>
+      <a href="#para-ti" data-goatcounter-click="nav-para-ti">¿Es para ti?</a>
+      <a href="#equipo" data-goatcounter-click="nav-equipo">Equipo</a>
+      <a class="btn btn-accent" href="#contacto" data-goatcounter-click="nav-contacto">Hablemos</a>
     </nav>
   </div>
 </header>
@@ -244,8 +248,8 @@
     <h1>¿Sabes qué está pasando<br>de verdad en tu negocio?</h1>
     <p class="lead">Ayudamos a pequeños negocios a ver sus números claros, a analizar sus procesos y mejorar su día a día utilizando datos e IA.</p>
     <div class="ctas">
-      <a class="btn btn-accent" href="#para-ti">¿Es para ti? Descúbrelo en 1 minuto</a>
-      <a class="btn btn-ghost" href="#que-hacemos">Qué hacemos</a>
+      <a class="btn btn-accent" href="#para-ti" data-goatcounter-click="hero-es-para-ti">¿Es para ti? Descúbrelo en 1 minuto</a>
+      <a class="btn btn-ghost" href="#que-hacemos" data-goatcounter-click="hero-que-hacemos">Qué hacemos</a>
     </div>
   </div>
 </section>
@@ -382,9 +386,9 @@
       <div class="pill">
         <svg><use href="#i-mail"></use></svg>
         <span id="email-text">info@enfocadata.com</span>
-        <button class="copy-btn" id="copy-email" type="button"><svg><use href="#i-copy"></use></svg>Copiar</button>
+        <button class="copy-btn" id="copy-email" type="button" data-goatcounter-click="contacto-copiar-email"><svg><use href="#i-copy"></use></svg>Copiar</button>
       </div>
-      <a class="pill" href="https://wa.me/34645846701" target="_blank" rel="noopener"><div class="wa-badge"><svg><use href="#i-whatsapp"></use></svg></div><span>+34 645 84 67 01</span></a>
+      <a class="pill" href="https://wa.me/34645846701" target="_blank" rel="noopener" data-goatcounter-click="contacto-whatsapp"><div class="wa-badge"><svg><use href="#i-whatsapp"></use></svg></div><span>+34 645 84 67 01</span></a>
     </div>
     <div class="contact-form">
       <form id="contact-form" novalidate>
@@ -481,6 +485,9 @@
       window.location.href = mailto;
       status.hidden = false;
       status.textContent = 'Te hemos abierto tu programa de correo con el mensaje listo para enviar. Si no se ha abierto, escríbenos directamente a info@enfocadata.com.';
+      if(window.goatcounter && window.goatcounter.count){
+        window.goatcounter.count({path: 'contacto-formulario-enviado', title: 'Formulario de contacto enviado', event: true});
+      }
     });
   })();
 
